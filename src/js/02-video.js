@@ -11,7 +11,9 @@ function onPlay(currentTime) {
   localStorage.setItem(KEY_LOCAL, JSON.stringify(currentTime));
 }
 
-const currentTime = JSON.parse(localStorage.getItem(KEY_LOCAL));
-const { seconds } = currentTime;
+const currentTime = localStorage.getItem(KEY_LOCAL);
 
-player.setCurrentTime(seconds);
+if (currentTime) {
+  const { seconds } = JSON.parse(currentTime);
+  player.setCurrentTime(seconds);
+}
